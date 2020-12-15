@@ -1,5 +1,5 @@
 <template>
-  <h1>Your todos:</h1>
+  <h1>Your todos: {{ localStorage.name }}</h1>
   <AddTodo
     @add-todo="addTodo"
   />
