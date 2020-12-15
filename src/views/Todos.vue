@@ -1,5 +1,5 @@
 <template>
-  <h1>Your todos: {{ localStorage.name }}</h1>
+  <h1>Your todos: {{ name }}</h1>
   <AddTodo
     @add-todo="addTodo"
   />
@@ -21,7 +21,10 @@ export default {
   name: 'Todos',
   data () {
     return {
-      todos: []
+      todos: [],
+      get name () {
+        return localStorage.getItem('name')
+      }
     }
   },
   methods: {

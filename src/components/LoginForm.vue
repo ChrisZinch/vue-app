@@ -34,7 +34,6 @@ export default {
         localStorage.setItem('auth', true)
         localStorage.setItem('name', this.name)
         this.$router.push('/todos')
-        console.log(localStorage)
       } else {
         alert('Your name or password is wrong')
         this.name = ''
