@@ -12,7 +12,7 @@ const routes = [
     name: 'Todos',
     component: () => import('../views/Todos.vue'),
     beforeEnter: (from, to, next) => {
-      if (localStorage.getItem('auth') === true) to()
+      if (localStorage.getItem('auth') === 'true') next()
       else next('./login')
     }
   }

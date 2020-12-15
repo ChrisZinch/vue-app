@@ -1,5 +1,5 @@
 <template>
-  <form v-if="auth === false" class="login" @submit.prevent="login">
+  <form class="login" @submit.prevent="login">
     <h2>Please, sign in:</h2>
     <label>Your name:</label>
     <input
@@ -15,9 +15,8 @@
       placeholder="Password"
       required
     >
-    <button type="submit" @click="persist">Login</button>
+    <button type="submit">Login</button>
   </form>
-  <h2 v-if="auth === true">Are you welcom!</h2>
 </template>
 
 <script>
@@ -26,18 +25,16 @@ export default {
   data () {
     return {
       name: '',
-      password: '',
-      auth: false
+      password: ''
     }
   },
-  mounted () {
-    localStorage.setItem('auth', false)
-  },
   methods: {
-    persist () {
+    login () {
       if (this.name === 'Admin' && this.password === '12345') {
         localStorage.setItem('auth', true)
-        this.auth = true
+        localStorage.setItem('name', this.name)
+        this.$router.push('/todos')
+        console.log(localStorage)
       } else {
         alert('Your name or password is wrong')
         this.name = ''
